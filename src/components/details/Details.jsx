@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading";
-import styles from "./Details.module.scss";
+import styles from "./details.module.scss";
 import Notfound from "../Notfound";
 
 export default function Details() {
