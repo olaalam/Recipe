@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&family=Pacifico&display=swap');
+
+
+$primary: #F29724;
+$secondary: #ca1023c4; 
+$tertiary: #c90519;
+$body: #f4f2ee;
+$button: #21ba75;
+
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin font-style($size, $weight: normal, $family: cursive) {
+    font: {
+        size: $size;
+        weight: $weight;
+        family: $family;
+    }
+}
+
+
+.title {
+    @include font-style(3rem, bold, 'Pacifico');
+    padding: 1rem;
+    color: black;
+}
+
+.recipeBody {
+    display: flex;
+
+    .left, .middle, .right {
+        flex: 1; 
+    }
+
+    .left, .middle {
+        padding: 0.1rem 0.5rem; 
+    }
+
+    .recipeImg {
+        width: 100%; 
+        height: auto;
+        @include border-radius(16px);
+    }
+
+    .youtube, .source {
+        border-radius: 10px;
+        padding: 0.7rem;
+        color: white;
+        text-align: center;
+        font-family: cursive;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+
+    .youtube {
+        background-color: red;
+        margin-left: 1rem;
+    }
+
+    .source {
+        margin: 1.5rem;
+        background-color: $button;
+        padding: 0.7rem 1rem;
+    }
+
+    .strInstructions {
+        @include font-style(1rem);
+    }
+
+    .right {
+        background-color: white;
+        position: relative;
+        top: -50px;
+        height: 80vh;
+        padding: 2rem 0.9rem;
+        @include border-radius(12px);
+
+        h3 {
+            border-bottom: 2px solid $body;
+            @include font-style(1.5rem, bold);
+            padding-bottom: 0.5rem;
+            color: black;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            border-bottom: none;
+            @include font-style(1.5rem);
+            padding-bottom: 0.5rem;
+            color: black;
+        }
+
+        li {
+            @include font-style(1rem);
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            border-bottom: 2px solid $body;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+        display: block; 
+        .buttons{
+            display: flex;           
+            justify-content: center; 
+            align-items: center;    
+            margin-top: 1rem;
+        }
+
+        .youtube, .source {
+            margin: 0 0.5rem;       
+            padding: 0.5rem 1rem;   
+            text-decoration: none;   }
+
+        .left, .middle, .right {
+            flex: none;
+            width: 100%;  
+            padding: 0.5rem 0;  
+            display: block;
+            margin: 0 auto;
+        }
+
+        .right {
+            position: relative;
+            top: 0;
+            height: auto; 
+            padding: 1rem; 
+            margin-top: 1rem;
+        }
+    }
+}

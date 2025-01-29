@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&family=Pacifico&display=swap');
+
+
+
+$primary: #F29724;
+$secondary: #ca1023c4; 
+$tertiary: #c90519;
+$body: #f4f2ee;
+$button: #21ba75;
+
+
+@mixin border-radius($radius: 9999px) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+
+@mixin box-shadow($shadow: 0 1px 3px 0 rgb(0 0 0 / .1), $hover-shadow: 0 20px 25px -5px rgb(0 0 0 / .1)) {
+  box-shadow: $shadow;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  
+  &:hover {
+    box-shadow: $hover-shadow;
+  }
+}
+
+
+@mixin flexbox($direction: row, $wrap: wrap) {
+  display: flex;
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+}
+
+
+body {
+  font-family: 'Encode Sans', sans-serif;
+  background-color: $body;
+}
+
+.container {
+  margin: auto;
+  padding: 1rem;
+}
+
+.row {
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.col {
+  flex-basis: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(to right, $primary, $secondary, $tertiary);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  padding: 0.5rem;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #c9d0d7;
+
+  li {
+    display: inline-block; 
+    margin: 0.7rem;
+  }
+
+  .link {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: #90a4b5;
+    background-color: transparent;
+    border: solid 1px #90a4b5;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &.active {
+      color: white;
+      background-color: black;
+    }
+
+    &:hover {
+      transform: scale(1.08);
+      background-color: white;
+      color: #000;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: solid 1px #90a4b5;
+  border-radius: 5px;
+  background-color: white;
+  color: #90a4b5;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: #90a4b5;
+  }
+}
+
+
+
+
+
+.card {
+  flex: 1 1 300px; 
+  max-width: 30%; 
+  position: relative;
+  height: 350px;
+  padding: 2rem;
+  background-color: white;
+  margin-top: 4rem;
+  @include border-radius(25px);
+  @include box-shadow(0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    .cardImage {
+      transform: rotate(360deg);
+    }
+  }
+
+  .cardImage {
+    width: 150px;
+    height: 150px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -70px;
+    border-radius: 50%;
+    left: calc(50% - 65px);
+    overflow: hidden;
+    transition: transform 0.5s ease;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .cardBody {
+    padding: 100px 1rem 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+
+  .cardSubtitle {
+    padding: 1rem;
+    margin: 0;
+    color: $button;
+    font-weight: 600;
+  }
+
+  button {
+    background-color: $button;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    @include border-radius(20px);
+
+    &:hover {
+      background-color: darken($button, 10%);
+    }
+  }
+}
+@media (max-width: 768px) {
+  .card {
+    max-width: 90%; 
+  }
+
+
+}
